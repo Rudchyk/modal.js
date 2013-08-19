@@ -1,5 +1,5 @@
 /*
- * @see http://github.com/NV/placeholder.js
+ * @see https://github.com/Rudchyk/modal.js
  * Author: Rudchyk.Sergii
  */
 
