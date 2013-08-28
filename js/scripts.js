@@ -29,7 +29,6 @@ modal = function() {
             var modalLinkID = $(this).attr("data-popup"),
                 modalPopap = $('.popupper_'+modalLinkID);
 
-            alert(modalLinkID);
             settings.popup.hide();
             settings.popupShadowBlock.show();
             modalPopap.show();
@@ -38,8 +37,8 @@ modal = function() {
             }
             else{
                 modalPopap.addClass('popupper-pos');
-            }; 
-              
+            };           
+
         });
         settings.popup.find('.popupper-close-js').click(function(){
             block(settings);
@@ -51,15 +50,20 @@ modal = function() {
             }
         });      
         $(document).click(function(event) {
+            console.log(settings.key);
+            var state = $('.popup-shadow-js').css("display") == 'none';
             if(settings.key && !$(event.target).closest(settings.popup).length){
-                block(settings); 
+                block(settings);
                 return;
             }
+            
             if(!$(event.target).hasClass("popupper-close-js"))
             {
                settings.key = true;
             }
-        });         
+            if(state) settings.key = false;
+        }); 
+
     };
 };
     // Launch plugin
