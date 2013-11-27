@@ -26,7 +26,7 @@ modal = function() {
         settings = $.extend(defaults, options); 
  
         settings.modalLink.click(function(){
-            var modalLinkID = $(this).attr("data-popup"),
+            var modalLinkID = $(this).data("popup"),
                 modalPopap = $('.popupper_'+modalLinkID);
 
             settings.popup.hide();
@@ -40,7 +40,7 @@ modal = function() {
             };           
 
         });
-        settings.popup.find('.popupper-close-js').click(function(){
+        settings.popup.on('click','.popupper-close-js', function(){
             block(settings);
             return;
         });
