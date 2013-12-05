@@ -50,15 +50,12 @@ Author: Rudchyk.Sergii
   padding: 50px;
 }
 .popupper_third.popupper-pos{
-  top: 50px;
   left: 0;
 }
 .popupper_four.popupper-pos{
-  top: 150px;
   right: 0;  
 }
 .popupper_first.popupper-pos{
-  top: 250px;
   left: 0;
 }
 .popupper_second.popupper-pos{
@@ -67,4 +64,7 @@ Author: Rudchyk.Sergii
 }
 .entry{
   position: relative;
+}
+.popupper-pos{
+  position: absolute;
 }

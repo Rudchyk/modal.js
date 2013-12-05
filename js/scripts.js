@@ -21,12 +21,15 @@ modal = function() {
             modalPositionCenter: true,
             modalLink: $(element),
             popup: $('.popupper-js'),
-            popupShadowBlock: $('.popup-shadow-js')     
+            popupShadowBlock: $('.popup-shadow-js'),
+            popupPosNumber: 50    
         },  
         settings = $.extend(defaults, options); 
  
         settings.modalLink.click(function(){
-            var modalLinkID = $(this).data("popup"),
+            var popupScroll = $(window).scrollTop(),
+                popupPos = popupScroll + settings.popupPosNumber,
+                modalLinkID = $(this).data("popup"),
                 modalPopap = $('.popupper_'+modalLinkID);
 
             settings.popup.hide();
@@ -36,7 +39,7 @@ modal = function() {
                 modalPopap.css({top:($(window).height()/2-modalPopap.height()/2), left:($(window).width()/2-modalPopap.width()/2)});
             }
             else{
-                modalPopap.addClass('popupper-pos');
+                modalPopap.addClass('popupper-pos').css('top', popupPos);
             };           
 
         });
