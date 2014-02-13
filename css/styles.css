@@ -23,19 +23,23 @@ Author: Rudchyk.Sergii
   text-align: center;
   font-size: 20px;
   background: white;
-  border-radius: 15px;
-  -moz-border-radius: 15px;
-  -webkit-border-radius: 15px;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0,0,0,.5);
   width: 500px;
 }
 .popupper-close{
-  font-size: 11px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 16px;
+  height: 16px;
+  background: url(../images/close.png);
   cursor: pointer;
-  text-align: right;
-  margin-bottom: 15px;
 }
 .popupper-close:hover{
-  text-decoration: underline;
+  background: url(../images/close_hover.png);
 }
 .popup-shadow{
   display: none;
@@ -47,7 +51,7 @@ Author: Rudchyk.Sergii
   height: 100%;
 }
 .popupper_block{
-  padding: 50px;
+  padding: 20px;
 }
 .popupper_third.popupper-pos{
   left: 0;

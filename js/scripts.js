@@ -40,8 +40,7 @@ modal = function() {
             }
             else{
                 modalPopap.addClass('popupper-pos').css('top', popupPos);
-            };           
-
+            };
         });
         settings.popup.on('click','.popupper-close-js', function(){
             block(settings);
@@ -53,7 +52,6 @@ modal = function() {
             }
         });      
         $(document).click(function(event) {
-            console.log(settings.key);
             var state = $('.popup-shadow-js').css("display") == 'none';
             if(settings.key && !$(event.target).closest(settings.popup).length){
                 block(settings);
@@ -65,7 +63,14 @@ modal = function() {
                settings.key = true;
             }
             if(state) settings.key = false;
-        }); 
+        });
+        $(window).bind("resize", function(){
+            if (settings.modalPositionCenter == true) {
+                $('.popupper-js:visible').css({top:($(window).height()/2-$('.popupper-js:visible').height()/2), left:($(window).width()/2-$('.popupper-js:visible').width()/2)});
+            }
+        });
+
+
 
     };
 };
