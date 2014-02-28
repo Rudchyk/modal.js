@@ -41,8 +41,7 @@ Author: Rudchyk.Sergii
 .popupper-close:hover{
   background: url(../images/close_hover.png);
 }
-.popup-shadow{
-  display: none;
+.popup-overlay{
   background: rgba(0,0,0,0.5);
   position: fixed;
   top: 0;

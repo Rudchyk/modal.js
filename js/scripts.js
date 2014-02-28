@@ -10,7 +10,7 @@ function block(settings, modal){
                         .hide()
                         .removeClass(modal.posClass)
                         .css({top: '', left: ''});
-    settings.shadowBlock.hide();
+    $('.'+modal.overlayJsClass).remove();
     settings.key = false;
 }
  
@@ -24,7 +24,7 @@ modal = function() {
             center: true,
             modalLink: $(element),
             modalWindowClass: 'popupper',
-            shadowBlock: $('.popup-shadow-js'),
+            shadowBlock: 'popup-overlay',
             pos: 50,
             modalData : 'popup',
             posClass : '-pos',
@@ -35,8 +35,10 @@ modal = function() {
         var modal ={
             modalWindow : '.'+settings.modalWindowClass+'-js',
             close : '.'+settings.modalWindowClass+settings.closeClass,
-            posClass : settings.modalWindowClass+settings.posClass
-        }
+            posClass : settings.modalWindowClass+settings.posClass,
+            overlayJsClass : settings.shadowBlock + '-js'
+        },
+        overlay = $('<div class="' + settings.shadowBlock +' ' + modal.overlayJsClass + '"></div>');
  
         settings.modalLink.click(function(){
             var $thisEl = $(this),
@@ -49,7 +51,8 @@ modal = function() {
                                 .hide()
                                 .removeClass(modal.posClass)
                                 .css({top: '', left: ''});
-            settings.shadowBlock.show();
+            $('.'+modal.overlayJsClass).remove();
+            $('body').prepend(overlay);
             $modalPopap.show();
             if (settings.center == true) {
                 $modalPopap.css({top:($(window).height()/2-$modalPopap.height()/2), left:($(window).width()/2-$modalPopap.width()/2)});
@@ -68,7 +71,6 @@ modal = function() {
             }
         });
         $(document).click(function(event) {
-            var state = settings.shadowBlock.css("display") == 'none';
             if(settings.key && !$(event.target).closest(modal.modalWindow).length){
                 block(settings, modal);
                 return;
@@ -78,7 +80,6 @@ modal = function() {
             {
                settings.key = true;
             }
-            if(state) settings.key = false;
         });
         $(window).bind("resize", function(){
             var $el = $(modal.modalWindow+':visible');
