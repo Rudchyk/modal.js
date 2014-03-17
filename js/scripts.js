@@ -4,7 +4,7 @@
  */
 
 (function($){
- 
+
 function block(settings, modal){
     $(modal.modalWindow)
                         .hide()
@@ -13,12 +13,12 @@ function block(settings, modal){
     $('.'+modal.overlayJsClass).remove();
     settings.key = false;
 }
- 
- 
+
+
 modal = function() {
- 
+
     this._init = function(element, options) {
- 
+
         var defaults = {
             key: false,
             center: true,
@@ -29,7 +29,7 @@ modal = function() {
             modalData : 'popup',
             posClass : '-pos',
             closeClass : '-close-js'
-        },  
+        },
         settings = $.extend(defaults, options);
 
         var modal ={
@@ -39,7 +39,7 @@ modal = function() {
             overlayJsClass : settings.shadowBlock + '-js'
         },
         overlay = $('<div class="' + settings.shadowBlock +' ' + modal.overlayJsClass + '"></div>');
- 
+
         settings.modalLink.click(function(){
             var $thisEl = $(this),
                 $modalScroll = $(window).scrollTop(),
@@ -71,15 +71,17 @@ modal = function() {
             }
         });
         $(document).click(function(event) {
+            var state = $('.'+modal.overlayJsClass).length == 0;
             if(settings.key && !$(event.target).closest(modal.modalWindow).length){
                 block(settings, modal);
                 return;
             }
-            
+
             if(!$(event.target).hasClass(settings.modalWindowClass+settings.closeClass))
             {
                settings.key = true;
             }
+            if(state) settings.key = false;
         });
         $(window).bind("resize", function(){
             var $el = $(modal.modalWindow+':visible');
@@ -94,11 +96,11 @@ modal = function() {
 };
     // Launch plugin
     $.fn.modal = function( options ){
- 
+
         return this.each(function(){
-             
+
              $( this ).data( "modal", new modal()._init( this, options ) );
- 
+
          });
     };
 })(jQuery);
